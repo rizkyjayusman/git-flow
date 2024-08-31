@@ -164,18 +164,18 @@ create_version() {
 
   # Define suffix based on platform
   case "$PLATFORM" in
-    xooply)
-      SUFFIX="xooply"
+    antares)
+      SUFFIX="antares"
       ;;
-    whitelabel-a)
-      SUFFIX="whitelabel-a"
+    sirius)
+      SUFFIX="sirius"
       ;;
-    whitelabel-b)
-      SUFFIX="whitelabel-b"
+    rigel)
+      SUFFIX="rigel"
       ;;
     *)
       echo "Unknown platform: $PLATFORM"
-      echo "Supported platforms: xooply, whitelabel-a, whitelabel-b"
+      echo "Supported platforms: antares, sirius, rigel"
       exit 1
       ;;
   esac
