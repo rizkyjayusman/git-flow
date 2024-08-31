@@ -10,13 +10,13 @@ This script automates common Git workflows, including branch creation, commits w
 
 **Command:**
 ```bash
-./gitflow.sh feature <branch-name>
+./gitflow feature <branch-name>
 ```
 
 Description: Creates a new feature branch based on the development branch.
 
 ``` bash
-./gitflow.sh feature my-new-feature
+./gitflow feature my-new-feature
 ```
 
 ### 2. Commit Changes
@@ -44,19 +44,19 @@ Options:
 
 * Commit with adding all changes:
 ```bash
-./gitflow.sh commit feat 'integrasi feature payment gateway'
+./gitflow commit feat 'integrasi feature payment gateway'
 ```
 
 * Commit without adding changes:
 ```bash
-./gitflow.sh commit --skip-add feat 'integrasi feature payment gateway'
+./gitflow commit --skip-add feat 'integrasi feature payment gateway'
 ```
 
 ### 3. Create and Tag a New Version
 
 **Command:**
 ```bash
-./gitflow.sh version <platform> <version-type> <tag-message>
+./gitflow version <platform> <version-type> <tag-message>
 ```
 
 Description: Creates a new version tag based on the latest tag for a specified platform. Increments the version according to the type and tags the commit with a message.
@@ -72,7 +72,7 @@ Description: Creates a new version tag based on the latest tag for a specified p
 Create a patch version tag for the xooply platform:
 
 ```bash
-./gitflow.sh version xooply patch 'integrasi feature payment gateway'
+./gitflow version xooply patch 'integrasi feature payment gateway'
 ```
 
 **Script Functions**
@@ -108,5 +108,5 @@ Combines all functions to create and push a new version tag, considering the pla
 Notes
 
 * Ensure you are in a Git repository when running the script.
-* Make sure the script has execute permissions (chmod +x gitflow.sh).
+* Make sure the script has execute permissions (chmod +x gitflow).
 * Adjust platform suffixes and supported prefixes in the script as needed.
