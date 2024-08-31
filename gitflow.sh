@@ -14,26 +14,62 @@ create_feature_branch() {
   echo "Successfully created and checked out to feature branch: feature/$BRANCH_NAME"
 }
 
-# Function to handle commits
+# Function to handle commits with prefixes
 create_commit() {
   if [ "$#" -lt 2 ]; then
-    echo "Usage: $0 commit [--skip-add] '<commit-message>'"
+    echo "Usage: $0 commit [--skip-add] <prefix> <commit-message>"
     exit 1
   fi
 
   SKIP_ADD=false
+  PREFIX=""
   COMMIT_MESSAGE=""
 
   # Parse options
   if [ "$1" == "--skip-add" ]; then
     SKIP_ADD=true
-    COMMIT_MESSAGE=$2
+    PREFIX=$2
+    COMMIT_MESSAGE=$3
   else
-    COMMIT_MESSAGE=$1
+    PREFIX=$1
+    COMMIT_MESSAGE=$2
   fi
 
   # Convert commit message to lowercase
   COMMIT_MESSAGE=$(echo "$COMMIT_MESSAGE" | tr '[:upper:]' '[:lower:]')
+
+  # Define prefix mapping
+  case "$PREFIX" in
+    feat|feature)
+      PREFIX="feat"
+      ;;
+    fix)
+      PREFIX="fix"
+      ;;
+    refactor)
+      PREFIX="refactor"
+      ;;
+    perf)
+      PREFIX="perf"
+      ;;
+    test)
+      PREFIX="test"
+      ;;
+    chore)
+      PREFIX="chore"
+      ;;
+    docs)
+      PREFIX="docs"
+      ;;
+    style)
+      PREFIX="style"
+      ;;
+    *)
+      echo "Unknown prefix: $PREFIX"
+      echo "Supported prefixes: feat, fix, refactor, perf, test, chore, docs, style"
+      exit 1
+      ;;
+  esac
 
   # Check for staged changes or add all if needed
   if [ "$SKIP_ADD" = false ]; then
@@ -45,9 +81,12 @@ create_commit() {
     exit 1
   fi
 
+  # Construct the commit message with prefix
+  FULL_COMMIT_MESSAGE="$PREFIX: $COMMIT_MESSAGE"
+
   # Commit the changes with the message
-  git commit -m "$COMMIT_MESSAGE"
-  echo "Committed with message: $COMMIT_MESSAGE"
+  git commit -m "$FULL_COMMIT_MESSAGE"
+  echo "Committed with message: $FULL_COMMIT_MESSAGE"
 }
 
 # Main script logic
@@ -58,7 +97,7 @@ case "$COMMAND" in
     create_feature_branch "$2"
     ;;
   commit)
-    create_commit "$2" "$3"
+    create_commit "$2" "$3" "$4"
     ;;
   *)
     echo "Unknown command: $COMMAND"
