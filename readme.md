@@ -24,7 +24,7 @@ Description: Creates a new feature branch based on the development branch.
 
 **Command:**
 ```bash
-./gitflow feature <branch-name>
+./gitflow bugfix <branch-name>
 ```
 
 Description: Creates a new bugfix branch based on the development branch.
@@ -43,7 +43,7 @@ Description: Creates a new bugfix branch based on the development branch.
 Description: Creates a new hotfix branch based on the main branch.
 
 ``` bash
-./gitflow bugfix my-bugfix-branch
+./gitflow hotfix my-bugfix-branch
 ```
 
 
