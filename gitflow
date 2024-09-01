@@ -10,7 +10,9 @@ create_feature_branch() {
   BRANCH_NAME=$1
   git checkout development
   git pull origin development
+  git stash save --include-untracked "Saving changes before fetching from remote"
   git checkout -b "feature/$BRANCH_NAME"
+  git stash pop
   echo "Successfully created and checked out to feature branch: feature/$BRANCH_NAME"
 }
 
