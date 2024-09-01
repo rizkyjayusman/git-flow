@@ -4,6 +4,7 @@
 
 This script automates common Git workflows, including branch creation, commits with prefixes, and version tagging. It supports platform-specific tag formats and provides options to skip adding changes before committing.
 
+
 ## Script Commands
 
 ### 1. Create a Feature Branch
@@ -19,7 +20,34 @@ Description: Creates a new feature branch based on the development branch.
 ./gitflow feature my-new-feature
 ```
 
-### 2. Commit Changes
+### 2. Create a Bugfix Branch
+
+**Command:**
+```bash
+./gitflow feature <branch-name>
+```
+
+Description: Creates a new bugfix branch based on the development branch.
+
+``` bash
+./gitflow bugfix my-bugfix-branch
+```
+
+### 3. Create a Hotfix Branch
+
+**Command:**
+```bash
+./gitflow hotfix <branch-name>
+```
+
+Description: Creates a new hotfix branch based on the main branch.
+
+``` bash
+./gitflow bugfix my-bugfix-branch
+```
+
+
+### 4. Commit Changes
 **Command:**
 
 Description: Commits changes with a specified prefix. Optionally, skips adding changes before committing.
